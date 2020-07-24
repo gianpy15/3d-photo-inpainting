@@ -4,9 +4,10 @@ RUN pip install --upgrade cython
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
-RUN pip install torchvision==0.5.0 cudatoolkit==10.1
+RUN apt-get update && apt-get install -y wget
+# RUN pip install torchvision==0.5.0 cudatoolkit==10.1
 
-WORKDIR /models
-RUN chmod +x download.sh && ./download.sh
 
 WORKDIR /workspace
+COPY . /workspace
+RUN chmod +x download.sh && ./download.sh
