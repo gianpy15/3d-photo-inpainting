@@ -1,2 +1,1 @@
-ln -s /models checkpoints
-docker run --rm -v $(pwd):/workspace 3d-imahe-inpainting python main.py --config argument.yml
+docker run --rm -v $(pwd)/image:/workspace/image -v $(pwd)/video:/workspace/video -v $(pwd)/depth:/workspace/depth --gpus all  3d-photo-inpainting
